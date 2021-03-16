@@ -1,0 +1,101 @@
+From fde14f7a16f72e9f05714211511f972224c3b6a5 Mon Sep 17 00:00:00 2001
+From: Zwei <zweidev@zweihander.me>
+Date: Mon, 15 Mar 2021 21:18:49 -0400
+Subject: [PATCH] feat(dwm.c): add in focus&tag for specific monitor
+
+Adds in focusmonnum and tagmonnum methods which are the equivalent of
+focusmon and tagmon but accept an interger monitor number to use rather
+than just a direction.
+
+Can be called in config as follows:
+MODKEY, XK_KP_Left,  focusmonnum, {.i = 2 }
+MODKEY, XK_KP_Begin, tagmonnum,   {.i = 3 }
+
+Very useful for multi-monitor setups with strange configurations such as
+4 monitors laid out 3 in one row and one on top in the middle.
+---
+ dwm.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+diff --git a/dwm.c b/dwm.c
+index 664c527..c584567 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -168,6 +168,7 @@ static void expose(XEvent *e);
+ static void focus(Client *c);
+ static void focusin(XEvent *e);
+ static void focusmon(const Arg *arg);
++static void focusmonnum(const Arg *arg);
+ static void focusstack(const Arg *arg);
+ static Atom getatomprop(Client *c, Atom prop);
+ static int getrootptr(int *x, int *y);
+@@ -185,6 +186,7 @@ static void monocle(Monitor *m);
+ static void motionnotify(XEvent *e);
+ static void movemouse(const Arg *arg);
+ static Client *nexttiled(Client *c);
++static Monitor *numtomon(int i);
+ static void pop(Client *);
+ static void propertynotify(XEvent *e);
+ static void quit(const Arg *arg);
+@@ -209,6 +211,7 @@ static void sigchld(int unused);
+ static void spawn(const Arg *arg);
+ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
++static void tagmonnum(const Arg *arg);
+ static void tile(Monitor *);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
+@@ -830,6 +833,20 @@ focusmon(const Arg *arg)
+ 	focus(NULL);
+ }
+ 
++void
++focusmonnum(const Arg *arg)
++{
++	Monitor *m;
++
++	if (!mons->next)
++		return;
++	if ((m = numtomon(arg->i)) == selmon)
++		return;
++	unfocus(selmon->sel, 0);
++	selmon = m;
++	focus(NULL);
++}
++
+ void
+ focusstack(const Arg *arg)
+ {
+@@ -1200,6 +1217,14 @@ nexttiled(Client *c)
+ 	return c;
+ }
+ 
++Monitor *
++numtomon(int i)
++{
++	Monitor *m = NULL;
++	for (m = mons; m->num != i; m = m->next);
++	return m;
++}
++
+ void
+ pop(Client *c)
+ {
+@@ -1671,6 +1696,14 @@ tagmon(const Arg *arg)
+ 	sendmon(selmon->sel, dirtomon(arg->i));
+ }
+ 
++void
++tagmonnum(const Arg *arg)
++{
++	if (!selmon->sel || !mons->next)
++		return;
++	sendmon(selmon->sel, numtomon(arg->i));
++}
++
+ void
+ tile(Monitor *m)
+ {
+-- 
+2.30.2
+
