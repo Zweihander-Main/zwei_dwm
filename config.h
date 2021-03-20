@@ -27,10 +27,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class         instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",        NULL,       NULL,       0,            1,           -1 },
-	{ "copyq",       NULL,       NULL,       0,            1,           -1 },
-	{ "stalonetray", NULL,       NULL,       0,            1,           2 }
+	/* class         instance    title       tags mask     isfloating   monitor float xywh, borderpx */
+	{ "Gimp",        NULL,       NULL,       0,            1,           -1 , 50,50,500,500, 1},
+	{ "copyq",       NULL,       NULL,       0,            1,           -1 , 50,50,500,500, 1},
+	{ "stalonetray", NULL,       NULL,       0,            1,           2 , 50,50,500,500, 0}
 };
 
 /* layout(s) */
