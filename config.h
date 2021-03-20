@@ -30,7 +30,7 @@ static const Rule rules[] = {
 	/* class         instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",        NULL,       NULL,       0,            1,           -1 },
 	{ "copyq",       NULL,       NULL,       0,            1,           -1 },
-	{ "stalonetray", NULL,       NULL,       0,            1,           -1 }
+	{ "stalonetray", NULL,       NULL,       0,            1,           2 }
 };
 
 /* layout(s) */
