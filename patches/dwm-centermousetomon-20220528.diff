@@ -1,0 +1,46 @@
+From 852748526ea77bfdeab7813187b30278833c11c7 Mon Sep 17 00:00:00 2001
+From: Zwei <zweidev@zweihander.me>
+Date: Sat, 28 May 2022 23:07:18 -0400
+Subject: [PATCH] feat(dwm): add centermousetomonnum ability
+
+Call with monitor number to move mouse to center of that monitor.
+
+Ex:
+{ MODKEY|ControlMask, XK_KP_Left,  centermousetomonnum, {.i = 2 } },
+---
+ dwm.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/dwm.c b/dwm.c
+index d654f95..bc1cf79 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -153,6 +153,7 @@ static void arrangemon(Monitor *m);
+ static void attach(Client *c);
+ static void attachstack(Client *c);
+ static void buttonpress(XEvent *e);
++static void centermousetomonnum(const Arg *arg);
+ static void checkotherwm(void);
+ static void cleanup(void);
+ static void cleanupmon(Monitor *mon);
+@@ -475,6 +476,17 @@ buttonpress(XEvent *e)
+ 			buttons[i].func(click == ClkTagBar && buttons[i].arg.i == 0 ? &arg : &buttons[i].arg);
+ }
+ 
++void
++centermousetomonnum(const Arg *arg)
++{
++	Monitor *m;
++
++	if (!mons->next)
++		return;
++	m = numtomon(arg->i);
++	XWarpPointer(dpy, None, m->barwin, 0, 0, 0, 0, m->mw / 2, m->mh / 2);	
++}
++
+ void
+ checkotherwm(void)
+ {
+-- 
+2.36.1
+
