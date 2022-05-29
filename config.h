@@ -39,7 +39,7 @@ static const Rule rules[] = {
 	{ "Mumble",      NULL,       NULL,       1 << 8,       0,           0 ,      -1,-1,-1,-1, 1},
 	{ "Thunderbird", NULL,       NULL,       1 << 7,       0,           2 ,      -1,-1,-1,-1, 1},
 	{ "stalonetray", NULL,       NULL,       0,            1,           2 ,      50,50,500,500, 0},
-	{ "pinentry-qt", NULL,       NULL,       0,            1,           -1 ,     -1,-1,-1,-1, -1}
+	{ "pinentry-qt", NULL,       NULL,       0,            1,           -1 ,     -1,-1,-1,-1, 1}
 
 };
 
