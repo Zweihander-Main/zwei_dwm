@@ -1,6 +1,6 @@
-# Zwei's DWM Fork
+# Zwei's dwm Fork
 
-> DWM for those who like odd monitor configurations
+> dwm for those who like odd monitor configurations
 
 Let's say that you had the bad taste to create a monitor configuration as follows:
 
