@@ -35,6 +35,7 @@ static const Rule rules[] = {
 	/* class         instance    title       tags mask     isfloating   monitor  float xywh     borderpx */
 	{ "copyq",       NULL,       NULL,       0,            1,           -1 ,     50,50,500,500, 1},
 	{ "Element",     NULL,       NULL,       1 << 8,       0,           3 ,      -1,-1,-1,-1, 1},
+	{ "obs",         NULL,       NULL,       1 << 7,       0,           3 ,      -1,-1,-1,-1, 1},
 	{ "Mumble",      NULL,       NULL,       1 << 8,       0,           0 ,      -1,-1,-1,-1, 1},
 	{ "thunderbird", "Mail",     NULL,       1 << 7,       0,           2 ,      -1,-1,-1,-1, 1},
 	{ "stalonetray", NULL,       NULL,       0,            1,           2 ,      50,50,500,500, 0},
