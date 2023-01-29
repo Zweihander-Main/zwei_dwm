@@ -69,6 +69,8 @@ KP_Left sh "sleep 0.1; xdotool key 'Super+Control+KP_Left' 'Super+semicolon'", e
 KP_Right sh "sleep 0.1; xdotool key 'Super+Control+KP_Right' 'Super+semicolon'", end
 ```
 
+Use the `-plus` version to add `centermousetomon` which uses direction instead of monitor number.
+
 ## Other Patches
 
 - [activetagindicatorbar](https://dwm.suckless.org/patches/activetagindicatorbar/) - changes active rectangle to bar
