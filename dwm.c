@@ -153,6 +153,7 @@ static void arrangemon(Monitor *m);
 static void attach(Client *c);
 static void attachstack(Client *c);
 static void buttonpress(XEvent *e);
+static void centermousetomon(const Arg *arg);
 static void centermousetomonnum(const Arg *arg);
 static void checkotherwm(void);
 static void cleanup(void);
@@ -474,6 +475,17 @@ buttonpress(XEvent *e)
 		if (click == buttons[i].click && buttons[i].func && buttons[i].button == ev->button
 		&& CLEANMASK(buttons[i].mask) == CLEANMASK(ev->state))
 			buttons[i].func(click == ClkTagBar && buttons[i].arg.i == 0 ? &arg : &buttons[i].arg);
+}
+
+void
+centermousetomon(const Arg *arg)
+{
+	Monitor *m;
+
+	if (!mons->next)
+		return;
+	m = dirtomon(arg->i);
+	XWarpPointer(dpy, None, m->barwin, 0, 0, 0, 0, m->mw / 2, m->mh / 2);	
 }
 
 void
