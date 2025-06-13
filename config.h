@@ -39,14 +39,15 @@ static const Rule rules[] = {
 	{ "Mumble",      NULL,       NULL,       1 << 8,       0,           0 ,      -1,-1,-1,-1, 1},
 	{ "thunderbird", "Mail",     NULL,       1 << 7,       0,           2 ,      -1,-1,-1,-1, 1},
 	{ "stalonetray", NULL,       NULL,       0,            1,           2 ,      50,50,500,500, 0},
-	{ "pinentry-qt", NULL,       NULL,       0,            1,           -1 ,     -1,-1,-1,-1, 1}
+	{ "pinentry-qt", NULL,       NULL,       0,            1,           -1 ,     -1,-1,-1,-1, 1},
+	{ NULL,          "RAIL",     NULL,       0,            1,           -1 ,     -1,-1,-1,-1, 1}
 
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;    /* number of clients in master area */
+static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
